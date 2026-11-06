@@ -1,0 +1,42 @@
+<idea-plugin>
+    <id>branchstash</id>
+    <name>Branch Stash Switcher</name>
+    <vendor>PerfilovStanislav</vendor>
+    <description><![CDATA[
+        Switch Git branch with automatic stash: changes of the current branch are stashed,
+        the target branch is checked out, and the stash previously made for it by this plugin is restored.
+        <b>Switch Branch with Stash…</b> (Ctrl+Alt+Shift+B) and <b>New Branch with Stash…</b> are in the branch widget popup,
+        the Git menu and the right-click Git submenu.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Branch Stash" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action id="branchstash.SwitchWithStash"
+                class="branchstash.SwitchWithStashAction"
+                text="Switch Branch with Stash…"
+                description="Stash current changes, check out a branch and restore its own stash">
+            <!-- Git menu in the menu bar -->
+            <add-to-group group-id="Git.MainMenu" anchor="after" relative-to-action="Git.Branches"/>
+            <!-- Branch widget popup, next to "New Branch…" -->
+            <add-to-group group-id="Git.Branches.List" anchor="after" relative-to-action="Git.CreateNewBranch"/>
+            <!-- Right-click → Git submenu, next to "Branches…" -->
+            <add-to-group group-id="GitRepositoryActions" anchor="after" relative-to-action="Git.Branches"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt shift B"/>
+        </action>
+        <action id="branchstash.NewBranchWithStash"
+                class="branchstash.NewBranchWithStashAction"
+                text="New Branch with Stash…"
+                description="Stash current changes, then create and check out a new clean branch">
+            <!-- Right below the built-in "New Branch…" in the same three places. -->
+            <add-to-group group-id="Git.MainMenu" anchor="after" relative-to-action="Git.CreateNewBranch"/>
+            <add-to-group group-id="Git.Branches.List" anchor="after" relative-to-action="Git.CreateNewBranch"/>
+            <add-to-group group-id="GitRepositoryActions" anchor="after" relative-to-action="Git.CreateNewBranch"/>
+        </action>
+    </actions>
+</idea-plugin>
