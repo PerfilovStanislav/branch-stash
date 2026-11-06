@@ -23,13 +23,17 @@ flowchart LR
 
 Both actions sit next to the built-in branch actions:
 
+<p align="center">
+  <img src="docs/branch-popup.png" alt="Branch popup with New Branch with Stash and Switch Branch with Stash actions" width="520">
+</p>
+
 | Place | Location |
 |---|---|
 | Branch widget popup (toolbar) | below **New Branch…** |
 | **Git** menu in the main menu bar | next to **Branches…** / **New Branch…** |
 | Right-click → **Git** submenu | next to **Branches…** / **New Branch…** |
 
-**Switch Branch with Stash…** also has a shortcut: `Ctrl+Alt+Shift+B`. Search for "with Stash" in *Settings › Keymap* to change it.
+**Switch Branch with Stash…** also has a shortcut: `⌥⇧⌘B` on macOS, `Ctrl+Alt+Shift+B` on Windows/Linux. Search for "with Stash" in *Settings › Keymap* to change it.
 
 ## How it works
 
